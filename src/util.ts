@@ -9,7 +9,7 @@ const getConfig = (key?: string) => {
 const getPackagesDir = (): string => {
   const packageDirs: string[] = atom.packages.getPackageDirPaths();
 
-  return packageDirs.filter( (val: string) => !(val.includes('/dev/packages') && val.includes('app.asar')) )[0];
+  return packageDirs.filter( (val: string) => (!val.includes('/dev/packages') && !val.includes('app.asar')) )[0];
 };
 
 export {

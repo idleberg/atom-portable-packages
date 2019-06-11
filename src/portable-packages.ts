@@ -28,11 +28,12 @@ module.exports = {
         const { selectListView } = await import('./portable-packages-view');
 
         const packageNames = atom.packages.getAvailablePackageNames();
+        const packages = packageNames.filter( packageName => !atom.packages.isBundledPackage(packageName));
 
-        if (packageNames === undefined) return;
+        if (packages === undefined) return;
 
         const theme = await selectListView(
-          packageNames
+          packages
         );
 
         if (theme === undefined) return;
