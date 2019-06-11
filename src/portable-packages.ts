@@ -27,12 +27,12 @@ module.exports = {
       'portable-packages:create-package': async () => {
         const { selectListView } = await import('./portable-packages-view');
 
-        const themeNames = atom.packages.getAvailablePackageNames();
+        const packageNames = atom.packages.getAvailablePackageNames();
 
-        if (themeNames === undefined) return;
+        if (packageNames === undefined) return;
 
         const theme = await selectListView(
-          themeNames
+          packageNames
         );
 
         if (theme === undefined) return;
