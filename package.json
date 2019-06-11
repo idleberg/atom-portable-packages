@@ -10,7 +10,12 @@
     "prepublishOnly": "npm run build",
     "test": "npm run lint"
   },
-  "keywords": [],
+  "keywords": [
+    "packages",
+    "portable packages",
+    "portable",
+    "portability"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/idleberg/atom-portable-packages"
