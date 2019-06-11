@@ -1,0 +1,48 @@
+{
+  "name": "portable-packages",
+  "main": "./lib/portable-packages",
+  "version": "0.0.0",
+  "description": "Installs and creates portable Atom packages",
+  "scripts": {
+    "build": "tsc --pretty --project ./",
+    "dev": "tsc --watch --pretty --project ./",
+    "lint": "tslint --project ./",
+    "prepublishOnly": "npm run build",
+    "test": "npm run lint"
+  },
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/idleberg/atom-portable-packages"
+  },
+  "homepage": "https://atom.io/packages/portable-packages",
+  "bugs": {
+    "url": "https://github.com/idleberg/atom-portable-packages/issues"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+    "atom-read-manifest": "^0.2.0",
+    "atom-select-list": "^0.7.2",
+    "globby": "^9.2.0",
+    "ignore": "^5.1.2",
+    "jszip": "^3.2.1",
+    "util": "^0.12.0"
+  },
+  "devDependencies": {
+    "@types/atom": "^1.36.1",
+    "@types/file-saver": "^2.0.1",
+    "@types/jszip": "^3.1.6",
+    "@types/node": "^12.0.4",
+    "husky": "^2.3.0",
+    "tslint": "^5.17.0",
+    "typescript": "^3.5.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  }
+}
