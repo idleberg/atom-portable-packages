@@ -69,7 +69,7 @@ const createPackage = async (selectedPackage: string) => {
     console.error(err);
   }
 
-  if (getConfig('ignoreFile')) {
+  if (getConfig('revealFile')) {
     shell.showItemInFolder(`${packagesDir}/${outName}.atom-package`);
   }
 };
