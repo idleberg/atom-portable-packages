@@ -49,7 +49,7 @@ cd portable-packages && npm install
 
 ### Install Portable Package
 
-To install packages, simply drag them onto the Atom window. Alternatively, you can configure Atom as the default application for `.atom-package` files or open them from them from the command-line (e.g. `atom teletype.atom-package`).
+To install packages, simply drag them onto the Atom window. Alternatively, you can configure Atom as the default application for `.atom-package` files or open them from the command-line (e.g. `atom teletype.atom-package`).
 
 ### Create Portable Package
 
