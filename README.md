@@ -53,7 +53,7 @@ To install packages, simply drag them onto the Atom window. Alternatively, you c
 
 ### Create Portable Package
 
-Run the *Portable Packages: Create* from the [Command Palette](https://atom.io/docs/latest/getting-started-atom-basics#command-palette) and select which installed package you would like to compress. Upon creation, the created file will be revealed in your file browser.
+Run the *Portable Packages: Create* from the [Command Palette](https://atom.io/docs/latest/getting-started-atom-basics#command-palette) and select which installed package you would like to compress. Upon creation, the portable package will be revealed in your file browser.
 
 ## FAQ
 
