@@ -1,7 +1,7 @@
 {
   "name": "portable-packages",
   "main": "./lib/portable-packages",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Installs and creates portable Atom packages",
   "scripts": {
     "build": "tsc --pretty --project ./",
