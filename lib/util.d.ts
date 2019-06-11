@@ -1,2 +1,3 @@
 declare const getConfig: (key?: string | undefined) => any;
-export { getConfig };
+declare const getPackagesDir: () => string;
+export { getConfig, getPackagesDir };

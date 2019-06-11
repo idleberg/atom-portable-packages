@@ -1,6 +1,7 @@
 import JSZip from 'jszip';
 import { basename } from 'path';
 import { existsSync, mkdirSync, readFile, writeFileSync } from 'fs';
+import { getPackagesDir } from './util';
 import { join } from 'path';
 import { promisify } from 'util';
 
@@ -15,7 +16,7 @@ const installPackage = (uri: string) => {
       {
         text: 'Install',
         onDidClick: async () => {
-          const packagesDir = atom.packages.getPackageDirPaths()[0];
+          const packagesDir = getPackagesDir();
 
           let fileContents;
 

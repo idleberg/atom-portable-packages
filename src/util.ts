@@ -6,6 +6,13 @@ const getConfig = (key?: string) => {
   return atom.config.get('portable-packages');
 };
 
+const getPackagesDir = (): string => {
+  const packageDirs: string[] = atom.packages.getPackageDirPaths();
+
+  return packageDirs.filter( (val: string) => val.includes('.atom/packages'))[0];
+};
+
 export {
-  getConfig
+  getConfig,
+  getPackagesDir
 };

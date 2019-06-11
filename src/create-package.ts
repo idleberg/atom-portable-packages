@@ -2,7 +2,7 @@
 import JSZip from 'jszip';
 import globby from 'globby';
 import ignore from 'ignore';
-import { getConfig } from './util';
+import { getConfig, getPackagesDir } from './util';
 import { join, relative, resolve } from 'path';
 import { promisify } from 'util';
 // @ts-ignore
@@ -17,11 +17,10 @@ const writeFileAsync = promisify(writeFile);
 const createPackage = async (selectedPackage: string) => {
   atom.notifications.addInfo('Create Package');
 
-  const packagesDir = atom.packages.getPackageDirPaths()[0];
+  const packagesDir = getPackagesDir();
   const packageDir = resolve(packagesDir, selectedPackage);
   const ignoreFile = getConfig('ignoreFile');
   let ignoreFileContents: string = '';
-
 
   try {
     ignoreFileContents = (await readFileAsync(`${packageDir}/${ignoreFile}`)).toString();
