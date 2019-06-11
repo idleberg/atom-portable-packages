@@ -11,7 +11,6 @@ module.exports = {
   subscriptions: null,
 
   activate(): void {
-    // Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     this.subscriptions = new CompositeDisposable;
 
     this.subscriptions.add(atom.workspace.addOpener( (uri: string): any => {
@@ -25,11 +24,6 @@ module.exports = {
 
       return;
     }));
-
-    // this.subscriptions.add(atom.commands.add('atom-workspace', {
-    //   'portable-packages:create-package': () => createPackage(),
-    //   // 'portable-packages:install-package': () => installPackage()
-    // }));
 
     this.subscriptions.add(atom.commands.add('atom-workspace', {
       'portable-packages:create-package': async () => {
@@ -45,11 +39,9 @@ module.exports = {
 
         if (theme === undefined) return;
 
-         createPackage(theme);
+        createPackage(theme);
       }
-  }));
-
-
+    }));
   },
 
   deactivate(): void {
