@@ -4,6 +4,7 @@
 [![apm](https://flat.badgen.net/apm/v/portable-packages)](https://atom.io/packages/portable-packages)
 [![apm](https://flat.badgen.net/apm/dl/portable-packages)](https://atom.io/packages/portable-packages)
 [![CircleCI](https://flat.badgen.net/circleci/github/idleberg/atom-portable-packages)](https://circleci.com/gh/idleberg/atom-portable-packages)
+[![David](https://flat.badgen.net/david/dep/idleberg/atom-portable-packages)](https://david-dm.org/idleberg/atom-portable-packages)
 
 # Description
 
