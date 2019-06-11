@@ -59,7 +59,7 @@ Run the *Portable Packages: Create* from the [Command Palette](https://atom.io/d
 
 #### What are portable packages?
 
-A portable package is a simple Zip-file with the file-extension `.atom-package`. By default, they include Node dependencies and can be installed without the need of an internet connection.
+A portable package is a simple Zip-file with the file-extension `.atom-package`. By default, these include Node dependencies and can be installed without the need of an internet connection.
 
 #### How can I exclude files from my package?
 
