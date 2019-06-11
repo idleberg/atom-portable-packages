@@ -14,8 +14,6 @@ module.exports = {
     this.subscriptions = new CompositeDisposable;
 
     this.subscriptions.add(atom.workspace.addOpener( (uri: string): any => {
-      console.log('uri', typeof uri, uri);
-
       if (uri.endsWith('.atom-package')) {
         installPackage(uri);
 
