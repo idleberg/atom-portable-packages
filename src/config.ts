@@ -33,7 +33,7 @@ export default {
   },
   revealFile: {
     title: 'Reveal Package',
-    description: 'Reveal package after its creation',
+    description: 'Reveal portable package after its creation',
     type: 'boolean',
     default: true,
     order: 4
