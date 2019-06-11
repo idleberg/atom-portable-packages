@@ -63,7 +63,7 @@ A portable package is a simple Zip-file with the file-extension `.atom-package`.
 
 #### How can I exclude files from my package?
 
-You can place an `.atomignore` file inside your package that works like a standard `.gitignore` file. In the settings, you can change the ignore file to a standard `.gitignore`or `.npmignore`. Take note, that [global `.gitignore`](https://help.github.com/en/articles/ignoring-files#create-a-global-gitignore) files are not considered.
+You can place an `.atomignore` file inside your package that works like a standard `.gitignore` file. In the settings, you can change the ignore file to a standard `.gitignore`or `.npmignore`. Take note, that [global .gitignore](https://help.github.com/en/articles/ignoring-files#create-a-global-gitignore) files are not considered.
 
 #### Why does my portable package not work?
 
