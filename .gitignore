@@ -11,4 +11,4 @@ yarn-error.log
 
 # Project-specific
 *.d.ts
-.js.map
+*.js.map
