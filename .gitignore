@@ -8,3 +8,7 @@ yarn-error.log
 
 # Yeoman
 .yo-rc.json
+
+# Project-specific
+*.d.ts
+.js.map
