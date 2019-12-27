@@ -1,7 +1,7 @@
 {
   "name": "portable-packages",
   "main": "./lib/portable-packages",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Installs and creates portable Atom packages",
   "scripts": {
     "build": "webpack --mode production",
