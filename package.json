@@ -28,6 +28,9 @@
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
+  "activationHooks": [
+    "core:loaded-shell-environment"
+  ],
   "dependencies": {
     "atom-read-manifest": "^0.2.0",
     "atom-select-list": "^0.7.2",
