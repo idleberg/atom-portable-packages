@@ -48,7 +48,7 @@ const createPackage = async (selectedPackage: string) => {
   });
 
   const pkgConfig = getConfig('compressionType');
-  const meta = await readManifest();
+  const meta: any = await readManifest('portable-packages');
 
   const options: any = {
     type: 'nodebuffer',
@@ -59,7 +59,7 @@ const createPackage = async (selectedPackage: string) => {
     }
   };
 
-  const manifest = await readManifest(selectedPackage);
+  const manifest: any = await readManifest(selectedPackage);
   const outName = `${manifest.name}-v${manifest.version}`;
 
   try {
