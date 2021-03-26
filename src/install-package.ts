@@ -1,13 +1,11 @@
 import JSZip from 'jszip';
 import { basename } from 'path';
-import { existsSync, mkdirSync, readFile, writeFileSync } from 'fs';
-import { getPackagesDir } from './util';
+import { promises as fs } from 'fs';
+import { exists, getPackagesDir } from './util';
 import { join } from 'path';
-import { promisify } from 'util';
 
-const readFileAsync = promisify(readFile);
 
-const installPackage = (uri: string) => {
+function installPackage(uri: string): void {
   const fileBasename = basename(uri, '.atom-package');
 
   const notification = atom.notifications.addInfo(`Do you really want to install \`${fileBasename}\`?`, {
@@ -17,39 +15,31 @@ const installPackage = (uri: string) => {
         text: 'Install',
         onDidClick: async () => {
           const packagesDir = getPackagesDir();
-
-          let fileContents;
-
-          try {
-            fileContents = await readFileAsync(uri);
-          } catch (err) {
-            throw err;
-          }
-
+          const fileContents = await fs.readFile(uri);
           const zip = await JSZip.loadAsync(fileContents);
           const meta = JSON.parse(await zip.file('package.json').async('text'));
           const packageDir = join(packagesDir, meta.name);
-          const packageExists = existsSync(packageDir);
+          const packageExists = await exists(packageDir);
 
           if (!packageExists) {
-            mkdirSync(packageDir);
+            await fs.mkdir(packageDir);
           }
 
-          Object.keys(zip.files).forEach( relativePath => {
+          Object.keys(zip.files).map(async relativePath => {
             const isDir = zip.files[relativePath].dir;
             const subDir = join(packageDir, relativePath);
 
             if (isDir) {
-              const subDirExists = existsSync(subDir);
+              const subDirExists = await exists(subDir);
 
               if (!subDirExists) {
-                mkdirSync(subDir);
+                await fs.mkdir(subDir);
               }
             } else {
               zip.file(relativePath).async('nodebuffer')
-              .then( contents => {
-                writeFileSync(subDir, contents);
-              });
+                .then(async contents => {
+                  await fs.writeFile(subDir, contents);
+                });
             }
           });
 
@@ -65,7 +55,7 @@ const installPackage = (uri: string) => {
       }
     ]
   });
-};
+}
 
 export {
   installPackage

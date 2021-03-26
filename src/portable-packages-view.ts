@@ -1,16 +1,15 @@
-// @ts-ignore
 import SelectListView from 'atom-select-list';
 import { Panel } from 'atom';
 
-export async function selectListView(
+async function selectListView(
   items: string[],
-): Promise<string | undefined> {
-  let panel: Panel<SelectListView<string>> | undefined;
+): Promise<string | undefined | void> {
+  let panel: Panel<string> | undefined;
   const currentFocus = document.activeElement as HTMLElement | void;
 
   try {
     return await new Promise<string | undefined>((resolve) => {
-      const select: SelectListView<string> = new SelectListView({
+      const select = new SelectListView({
         items,
         elementForItem: (item: string) => {
           const li = document.createElement('li');
@@ -19,7 +18,7 @@ export async function selectListView(
           return li;
         },
         didCancelSelection: () => {
-          resolve();
+          resolve('');
         },
         didConfirmSelection: (item: string) => {
           resolve(item);
@@ -39,3 +38,7 @@ export async function selectListView(
     if (currentFocus) currentFocus.focus();
   }
 }
+
+export {
+  selectListView
+};

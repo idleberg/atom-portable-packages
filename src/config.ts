@@ -21,7 +21,7 @@ export default {
   },
   ignoreFile: {
     title: 'Ignore File',
-    description: 'Specify which kind of ignore file to consider for packaging. Take not that global `.gitignore` files will not be taken into account.',
+    description: 'Specify which kind of ignore file to consider for packaging. Take note that global `.gitignore` files will not be taken into account.',
     type: 'string',
     default: '.atomignore',
     enum: [

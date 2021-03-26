@@ -1,26 +1,21 @@
-import { CompositeDisposable, } from 'atom';
+import { CompositeDisposable } from 'atom';
 
-// @ts-ignore
 import config from './config';
 import { createPackage } from './create-package';
 import { installPackage } from './install-package';
 
 
-module.exports = {
+export default {
   config: config,
   subscriptions: null,
 
   activate(): void {
-    this.subscriptions = new CompositeDisposable;
+    this.subscriptions = new CompositeDisposable();
 
-    this.subscriptions.add(atom.workspace.addOpener( (uri: string): any => {
+    this.subscriptions.add(atom.workspace.addOpener((uri: string) => {
       if (uri.endsWith('.atom-package')) {
         installPackage(uri);
-
-        return false;
       }
-
-      return;
     }));
 
     this.subscriptions.add(atom.commands.add('atom-workspace', {
@@ -32,13 +27,11 @@ module.exports = {
 
         if (packages === undefined) return;
 
-        const theme = await selectListView(
+        const theme: string | void = await selectListView(
           packages
         );
 
-        if (theme === undefined) return;
-
-        createPackage(theme);
+        if (theme) createPackage(theme);
       }
     }));
   },

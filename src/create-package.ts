@@ -1,29 +1,23 @@
-// @ts-ignore
 import JSZip from 'jszip';
 import globby from 'globby';
 import ignore from 'ignore';
 import { getConfig, getPackagesDir } from './util';
 import { join, relative, resolve } from 'path';
-import { promisify } from 'util';
-// @ts-ignore
 import { readManifest } from 'atom-read-manifest';
-import { readFile, readFileSync, writeFile } from 'fs';
-// @ts-ignore
+import { promises as fs } from 'fs';
 import { shell } from 'electron';
 
-const readFileAsync = promisify(readFile);
-const writeFileAsync = promisify(writeFile);
 
-const createPackage = async (selectedPackage: string) => {
+async function createPackage(selectedPackage: string): Promise<void> {
   atom.notifications.addInfo('Create Package');
 
   const packagesDir = getPackagesDir();
   const packageDir = resolve(packagesDir, selectedPackage);
   const ignoreFile = getConfig('ignoreFile');
-  let ignoreFileContents: string = '';
+  let ignoreFileContents = '';
 
   try {
-    ignoreFileContents = (await readFileAsync(`${packageDir}/${ignoreFile}`)).toString();
+    ignoreFileContents = (await fs.readFile(`${packageDir}/${ignoreFile}`)).toString();
   } catch (error) {
     console.warn(`No ${ignoreFile} found`);
   }
@@ -42,29 +36,30 @@ const createPackage = async (selectedPackage: string) => {
 
   const zip = new JSZip();
 
-  includedPaths.forEach(async includedPath => {
-    const contents = readFileSync(join(packageDir, includedPath));
+  await Promise.all(includedPaths.map(async (includedPath) => {
+    const contents = await fs.readFile(join(packageDir, includedPath));
     zip.file(includedPath, contents);
-  });
+  }));
 
   const pkgConfig = getConfig('compressionType');
-  const meta: any = await readManifest('portable-packages');
+  const meta: unknown = await readManifest('portable-packages');
 
-  const options: any = {
+  const options: JSZip.JSZipGeneratorOptions = {
     type: 'nodebuffer',
-    comment: `${meta.name} v${meta.version} | ${meta.homepage}`,
-    compression: pkgConfig.compressionType,
+    comment: `${meta['name']} v${meta['version']} | ${meta['homepage']}`,
+    compression: pkgConfig['compressionType'],
     compressionOptions: {
-      level: pkgConfig.compressionLevel
+      level: pkgConfig['compressionLevel']
     }
   };
 
-  const manifest: any = await readManifest(selectedPackage);
-  const outName = `${manifest.name}-v${manifest.version}`;
+  const manifest: unknown = await readManifest(selectedPackage);
+  const outName = `${manifest['name']}-v${manifest['version']}`;
 
   try {
-    let blob = await zip.generateAsync(options);
-    await writeFileAsync(`${packagesDir}/${outName}.atom-package`, blob);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const blob: any = await zip.generateAsync(options);
+    await fs.writeFile(`${packagesDir}/${outName}.atom-package`, blob);
   } catch (err) {
     console.error(err);
   }
@@ -72,7 +67,7 @@ const createPackage = async (selectedPackage: string) => {
   if (getConfig('revealFile')) {
     shell.showItemInFolder(`${packagesDir}/${outName}.atom-package`);
   }
-};
+}
 
 export {
   createPackage
