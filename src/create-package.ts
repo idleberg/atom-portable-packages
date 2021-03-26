@@ -9,7 +9,7 @@ import { shell } from 'electron';
 
 
 async function createPackage(selectedPackage: string): Promise<void> {
-  atom.notifications.addInfo('Create Package');
+  atom.notifications.addInfo('Creating Package&hellip;');
 
   const packagesDir = getPackagesDir();
   const packageDir = resolve(packagesDir, selectedPackage);
