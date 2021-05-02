@@ -52,6 +52,7 @@
     "@types/node": "^14.14.37",
     "@typescript-eslint/eslint-plugin": "^4.19.0",
     "@typescript-eslint/parser": "^4.19.0",
+    "eslint": "^7.25.0",
     "eslint-plugin-json": "^2.1.2",
     "husky": ">=4 <5",
     "jsonlint": "^1.6.3",
