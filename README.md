@@ -3,7 +3,7 @@
 [![apm](https://flat.badgen.net/apm/license/portable-packages)](https://atom.io/packages/portable-packages)
 [![apm](https://flat.badgen.net/apm/v/portable-packages)](https://atom.io/packages/portable-packages)
 [![apm](https://flat.badgen.net/apm/dl/portable-packages)](https://atom.io/packages/portable-packages)
-[![CircleCI](https://flat.badgen.net/circleci/github/idleberg/atom-portable-packages)](https://circleci.com/gh/idleberg/atom-portable-packages)
+[![CI](https://img.shields.io/github/workflow/status/idleberg/atom-portable-packages/CI?style=flat-square)](https://github.com/idleberg/atom-portable-packages/actions)
 [![David](https://flat.badgen.net/david/dep/idleberg/atom-portable-packages)](https://david-dm.org/idleberg/atom-portable-packages)
 
 # Description
@@ -54,7 +54,7 @@ To install packages, simply drag them onto the Atom window. Alternatively, you c
 
 ### Create Portable Package
 
-Run the *Portable Packages: Create* from the [Command Palette](https://atom.io/docs/latest/getting-started-atom-basics#command-palette) and select which installed package you would like to compress. Upon creation, the portable package will be revealed in your file browser.
+Run the _Portable Packages: Create_ from the [Command Palette](https://atom.io/docs/latest/getting-started-atom-basics#command-palette) and select which installed package you would like to compress. Upon creation, the portable package will be revealed in your file browser.
 
 ## FAQ
 
