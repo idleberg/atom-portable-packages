@@ -36,10 +36,8 @@ function installPackage(uri: string): void {
                 await fs.mkdir(subDir);
               }
             } else {
-              zip.file(relativePath).async('nodebuffer')
-                .then(async contents => {
-                  await fs.writeFile(subDir, contents);
-                });
+              const contents = await zip.file(relativePath).async('nodebuffer')
+              await fs.writeFile(subDir, contents);
             }
           });
 

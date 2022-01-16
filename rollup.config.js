@@ -17,7 +17,8 @@ const plugins = [
   ),
   typescript({
     allowSyntheticDefaultImports: true,
-    moduleResolution: 'node'
+    moduleResolution: 'node',
+    resolveJsonModule: true
   })
 ];
 

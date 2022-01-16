@@ -11,17 +11,17 @@ async function selectListView(
     return await new Promise<string | undefined>((resolve) => {
       const select = new SelectListView({
         items,
-        elementForItem: (item: string) => {
-          const li = document.createElement('li');
-          li.innerText = item;
+        elementForItem: (item) => {
+          const li: HTMLElement = document.createElement('li') as HTMLElement;
+          li.innerText = String(item);
 
           return li;
         },
         didCancelSelection: () => {
           resolve('');
         },
-        didConfirmSelection: (item: string) => {
-          resolve(item);
+        didConfirmSelection: (item) => {
+          resolve(String(item));
         },
         itemsClassList: ['atom-typescript'],
       });
