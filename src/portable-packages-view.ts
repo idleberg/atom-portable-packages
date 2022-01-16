@@ -4,7 +4,7 @@ import { Panel } from 'atom';
 async function selectListView(
   items: string[],
 ): Promise<string | undefined | void> {
-  let panel: Panel<string> | undefined;
+  let panel: Panel<SelectListView> | undefined;
   const currentFocus = document.activeElement as HTMLElement | void;
 
   try {

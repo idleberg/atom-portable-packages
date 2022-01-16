@@ -12,11 +12,13 @@ export default {
   activate(): void {
     this.subscriptions = new CompositeDisposable();
 
-    this.subscriptions.add(atom.workspace.addOpener((uri: string) => {
-      if (uri.endsWith('.atom-package')) {
-        installPackage(uri);
-      }
-    }));
+    this.subscriptions.add(
+      atom.workspace.addOpener((uri: string) => {
+        if (uri.endsWith('.atom-package')) {
+          installPackage(uri);
+        }
+      })
+    );
 
     this.subscriptions.add(atom.commands.add('atom-workspace', {
       'portable-packages:create-package': async () => {
